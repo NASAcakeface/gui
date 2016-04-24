@@ -56,7 +56,7 @@
     ];
     }]);
 
-    app.controller("RadarController", ["$scope", function($scope) {
+    app.controller("xadarController", ["$scope", function($scope) {
     $scope.radarData = [
         {hour: 1,sales: 54},
         {hour: 2,sales: 66},
@@ -71,62 +71,30 @@
     ];
     }]);
 
-    app.controller("XadarController", ["$scope", function($scope) {
+    app.controller("RadarController", ["$scope", function($scope) {
     $scope.radarData = [
         [
-			{axis:"Email",value:0.59},
-			{axis:"Social Networks",value:0.56},
-			{axis:"Internet Banking",value:0.42},
-			{axis:"News Sportsites",value:0.34},
-			{axis:"Search Engine",value:0.48},
-			{axis:"View Shopping sites",value:0.14},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.05},
-			{axis:"Stream Music",value:0.07},
-			{axis:"Online Gaming",value:0.12},
-			{axis:"Navigation",value:0.27},
-			{axis:"App connected to TV program",value:0.03},
-			{axis:"Offline Gaming",value:0.12},
-			{axis:"Photo Video",value:0.4},
-			{axis:"Reading",value:0.03},
-			{axis:"Listen Music",value:0.22},
-			{axis:"Watch TV",value:0.03},
-			{axis:"TV Movies Streaming",value:0.03},
-			{axis:"Listen Radio",value:0.07},
-			{axis:"Sending Money",value:0.18},
-			{axis:"Other",value:0.07},
-			{axis:"Use less Once week",value:0.08}
+			{axis:"contempt",value:0.59},
+			{axis:"neutral",value:0.56},
+			{axis:"happiness",value:0.42},
+			{axis:"disgust",value:0.34},
+			{axis:"surprise",value:0.48},
+			{axis:"anger",value:0.14},
 		  ],[
-			{axis:"Email",value:0.48},
-			{axis:"Social Networks",value:0.41},
-			{axis:"Internet Banking",value:0.27},
-			{axis:"News Sportsites",value:0.28},
-			{axis:"Search Engine",value:0.46},
-			{axis:"View Shopping sites",value:0.29},
-			{axis:"Paying Online",value:0.11},
-			{axis:"Buy Online",value:0.14},
-			{axis:"Stream Music",value:0.05},
-			{axis:"Online Gaming",value:0.19},
-			{axis:"Navigation",value:0.14},
-			{axis:"App connected to TV program",value:0.06},
-			{axis:"Offline Gaming",value:0.24},
-			{axis:"Photo Video",value:0.17},
-			{axis:"Reading",value:0.15},
-			{axis:"Listen Music",value:0.12},
-			{axis:"Watch TV",value:0.1},
-			{axis:"TV Movies Streaming",value:0.14},
-			{axis:"Listen Radio",value:0.06},
-			{axis:"Sending Money",value:0.16},
-			{axis:"Other",value:0.07},
-			{axis:"Use less Once week",value:0.17}
+			{axis:"contempt",value:0.48},
+			{axis:"neutral",value:0.41},
+			{axis:"happiness",value:0.27},
+			{axis:"disgust",value:0.28},
+			{axis:"surpirse",value:0.46},
+			{axis:"anger",value:0.29},
         ]
     ];
     }]);
     
-    app.directive('xadarChart', function($parse, $window){
+    app.directive('radarChart', function($parse, $window){
         return{
             restrict:'EA',
-            template:"<svg width='550' height='200'></svg>",
+            template:"<svg width='750' height='800'></svg>",
             link: function(scope, elem, attrs){
                 /*
                 var exp = $parse(attrs.radarData);
@@ -141,7 +109,10 @@
                 var svg = d3.select(rawSvg[0]);
                 */
 
-                var exp = $parse(attrs.chartData);
+                var exp1 = $parse(attrs.chartData);
+                var exp=exp1(scope);
+
+                var id = attrs.id;
                 function drawLineChart(exp) {
 
                     var d = exp;
@@ -364,7 +335,7 @@
             };
         });
 
-    app.directive('radarChart', function($parse, $window){
+    app.directive('xadarChart', function($parse, $window){
         return{
             restrict:'EA',
             template:"<svg width='550' height='200'></svg>",
