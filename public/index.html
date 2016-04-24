@@ -19,7 +19,7 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <body>
+    <body style="background-color: #81DAF5">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -82,16 +82,16 @@
                      <section ng-controller="PanelController as panel">
                         <ul class="nav nav-pills">
                             <li ng-class="{ active: panel.isSelected(1)}">
-                                <a href ng-click="panel.selectTab(1)">User: Face Cake</a>
+                                <a href ng-click="panel.selectTab(1)">User: John Johnson</a>
                             </li>
                             <li ng-class="{ active: panel.isSelected(2)}">
-                                <a href ng-click="panel.selectTab(2)">User: Chocolate Cake</a>
+                                <a href ng-click="panel.selectTab(2)">User: Jan Michael Vincent</a>
                             </li>
                             <li ng-class="{ active: panel.isSelected(3)}">
-                                <a href ng-click="panel.selectTab(3)">User: Cheese Cake</a>
+                                <a href ng-click="panel.selectTab(3)">User: Cindy Newell</a>
                             </li>
                             <li ng-class="{ active: panel.isSelected(4)}">
-                                <a href ng-click="panel.selectTab(4)">User: Bunt Cake</a>
+                                <a href ng-click="panel.selectTab(4)">User: Buzz Lightyear</a>
                             </li>
                         </ul>
                         {{tab}}
@@ -103,7 +103,7 @@
                                         <img src="http://placehold.it/150x150">
                                     </div>
                                     <div class="col-lg-4">
-                                        <h3> Name : Face Cake </h3>
+                                        <h3> Name : John Johnson</h3>
                                         <h5> Age: 46 </h5>
                                         <h5> Notes: Cool guy to hang out with. Really cool. </h5>
                                     </div>
@@ -118,14 +118,6 @@
                                 <div class=row>
                                      <div ng-controller="SalesController">
                                         <div linear-chart chart-data="salesData"></div>
-                                    </div>
-                                </div>
-                                <div class=row>
-                                    <div ng-controller="ScoreController as store">
-                                        <div ng-repeat="user in store.scores">
-                                            <h3> {{user.scores.anger}} </h3>
-                                            <hr>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class=row>
