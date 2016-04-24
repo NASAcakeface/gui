@@ -77,8 +77,72 @@
         {hour: 10,sales: 30}
     ];
     }]);
+/*
+    app.controller("RadarController", ["$http","$scope", function($scope,$http) {
 
-    app.controller("RadarController", ["$scope", function($scope) {
+        var eq = this;
+
+        eq.radarData = [];
+
+        $http.get('http://192.241.242.189/data/snap').success(function(data){
+			
+			debugger;
+            eq.radarData = data;
+        });
+});
+*/
+    app.controller('RadarController',['$http', '$scope', function($http, $scope){
+        scores = [];
+		$scope.radarData = []
+
+        i_score = $http.get('http://192.241.242.189/data/snap?user=Alexa').success(function(data){
+			
+            scores = data;
+			photo = scores.photo;
+			axis_array = Object.keys(photo);
+			arrayLength = axis_array.length;
+			formatted_data = [];
+			for (var i = 0; i < arrayLength; i++) {
+				formatted_data.push({"axis":axis_array[i],value:photo[axis_array[i]]});
+				//Do something
+			}
+			var array = $.map(formatted_data, function(value, index) {
+    return [value];
+});
+			//$scope.radarData.push([formatted_data]);
+    $scope.radarData = [
+        [
+			{axis:"contempt",value:0.59},
+			{axis:"neutral",value:0.56},
+			{axis:"happiness",value:0.42},
+			{axis:"disgust",value:0.34},
+			{axis:"surprise",value:0.48},
+			{axis:"anger",value:0.14},
+		 ] ];
+final_score = [formatted_data];
+	return final_score;
+        });
+    $scope.radarData = [
+        [
+			{axis:"contempt",value:0.59},
+			{axis:"neutral",value:0.56},
+			{axis:"happiness",value:0.42},
+			{axis:"disgust",value:0.34},
+			{axis:"surprise",value:0.48},
+			{axis:"anger",value:0.14},
+		  ],[
+			{axis:"contempt",value:0.48},
+			{axis:"neutral",value:0.41},
+			{axis:"happiness",value:0.27},
+			{axis:"disgust",value:0.28},
+			{axis:"surpirse",value:0.46},
+			{axis:"anger",value:0.29},
+        ]
+    ];
+
+    }]);
+
+/*
     $scope.radarData = [
         [
 			{axis:"contempt",value:0.59},
@@ -97,7 +161,8 @@
         ]
     ];
     }]);
-    
+ */
+
     app.directive('radarChart', function($parse, $window){
         return{
             restrict:'EA',
@@ -118,7 +183,6 @@
 
                 var exp1 = $parse(attrs.chartData);
                 var exp=exp1(scope);
-
                 var id = attrs.id;
                 function drawLineChart(exp) {
 
