@@ -19,3 +19,7 @@ h1{
 {
   stroke-dasharray: 1, 2;
 }
+
+body {
+	background-color: #81DAF5;
+}

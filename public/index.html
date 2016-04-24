@@ -19,7 +19,7 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <body>
+    <body style="background-color: #81DAF5">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -82,25 +82,51 @@
                      <section ng-controller="PanelController as panel">
                         <ul class="nav nav-pills">
                             <li ng-class="{ active: panel.isSelected(1)}">
-                                <a href ng-click="panel.selectTab(1)"> Overview - Radar Analysis </a>
+                                <a href ng-click="panel.selectTab(1)">User: John Johnson</a>
                             </li>
                             <li ng-class="{ active: panel.isSelected(2)}">
-                                <a href ng-click="panel.selectTab(2)"> Image Analysis </a>
+                                <a href ng-click="panel.selectTab(2)">User: Jan Michael Vincent</a>
                             </li>
                             <li ng-class="{ active: panel.isSelected(3)}">
-                                <a href ng-click="panel.selectTab(3)"> Voice Analysis </a>
+                                <a href ng-click="panel.selectTab(3)">User: Cindy Newell</a>
                             </li>
                             <li ng-class="{ active: panel.isSelected(4)}">
-                                <a href ng-click="panel.selectTab(4)"> Astro Bio </a>
+                                <a href ng-click="panel.selectTab(4)">User: Buzz Lightyear</a>
                             </li>
                         </ul>
                         {{tab}}
                     <div ng-show="panel.isSelected(1)">
                         <div ng-controller="EqController as store">
-                            <div ng-repeat="user in store.users">
-                                <h3> {{user.name}} </h3>
-                                <h5> age: {{user.age}} </h5>
-                                <hr>
+                            <div class="main col-lg-9 myHalfCol" style="padding-top: 20px;">
+                                <div class=row>
+                                    <div class="col-lg-4">
+                                        <img src="http://placehold.it/150x150">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h3> Name : John Johnson</h3>
+                                        <h5> Age: 46 </h5>
+                                        <h5> Notes: Cool guy to hang out with. Really cool. </h5>
+                                    </div>
+                                </div>
+                                <div class=row>
+                                    <h3>Status</h3>
+                                    <div ng-controller="RadarController">
+                                        <!-- <div radar-chart chart-data="radarData"></div> -->
+                                        <div radar-chart id="chart" chart-data="radarData" style="width: 50%; height: 50%"></div>
+                                    </div>
+                                </div>
+                                <div class=row>
+                                     <div ng-controller="SalesController">
+                                        <div linear-chart chart-data="salesData"></div>
+                                    </div>
+                                </div>
+                                <div class=row>
+                                    <h3>Suggested Actions:</h3>
+                                    <ul>
+                                        <li>Eat Chocolate</li>
+                                        <li>Play a video game</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
