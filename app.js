@@ -59,7 +59,7 @@
 			var hour=$scope.salesData.length+1;
 			var sales= Math.round(Math.random() * 100);
 			$scope.salesData.push({hour: hour, sales:sales});
-		}, 1000, 10);
+		}, 5000, 10);
 
     }]);
 
